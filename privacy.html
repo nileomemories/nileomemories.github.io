@@ -4,7 +4,7 @@
 <body><main>
 <img class="mark" src="icon.png" alt="">
 <h1>Privacy policy</h1>
-<p class="lead">Memories app · last updated 24 November 2026</p>
+<p class="lead">Memories app · last updated 24 November 2026 (web version added)</p>
 
 <h2>Who this is for</h2>
 <p>Memories is a personal photo app used by two people with their own Google account. It is not offered to the public.
@@ -27,6 +27,19 @@ This policy explains what the app does with Google user data.</p>
       phones in sync.</li>
   <li>It is stored in your own Google Drive and on your own phones. There is no other server, database or cloud service.</li>
   <li>The sign-in key from Google is kept in the phone's secure storage (Keychain on iPhone, Keystore on Android).</li>
+  <li><strong>Web version</strong> (opened in the browser or from the Home Screen): photos and notes are kept in the
+      browser's storage on that phone. Google's sign-in key is valid for one hour only and is kept only while the app is
+      open; it is never stored permanently.</li>
+</ul>
+
+<h2>The 09:00 notification of the web version</h2>
+<ul>
+  <li>If you turn it on, the browser creates a push address for the phone. The app stores it, with the phone's time
+      zone, in a small file in your Google Drive.</li>
+  <li>A script in your own Google account (Google Apps Script) reads these files at 09:00 and sends an empty "wake-up"
+      message through the phone's push service (Apple, Google, Mozilla or Microsoft). The message contains no photo and
+      no text; the notification is written by the app on the phone itself.</li>
+  <li>The script can only read your Google Drive, never change it, and sends only to those push services.</li>
 </ul>
 
 <h2>Sharing</h2>

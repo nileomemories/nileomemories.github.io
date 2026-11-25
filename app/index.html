@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Safety: this page may only run its own scripts and talk only to Google's sign-in and Drive. No outside code,
+         no other servers. ('unsafe-inline' styles: react-native-web writes its styles into the page;
+         'wasm-unsafe-eval': the SQLite database is WebAssembly.) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' data:; connect-src 'self' blob: data: https://www.googleapis.com https://oauth2.googleapis.com https://openidconnect.googleapis.com; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Memories</title>
+    <meta name="theme-color" content="#E8576B" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Memories" />
+    <link rel="manifest" href="/app/manifest.json" />
+    <link rel="apple-touch-icon" href="/app/apple-touch-icon.png" />
+    <link rel="icon" href="/app/icon-192.png" />
+    <script src="/app/sql-wasm.js"></script>
+    <style id="expo-reset">
+      html, body { height: 100%; }
+      body { overflow: hidden; background: #FBF8F5; }
+      #root { display: flex; height: 100%; flex: 1; }
+    </style>
+  </head>
+  <body>
+    <noscript>Memories needs JavaScript.</noscript>
+    <div id="root"></div>
+  <script src="/app/_expo/static/js/web/__expo-metro-runtime-ed4c1cfa6193d76fc294130e42bd1916.js" defer></script><script src="/app/_expo/static/js/web/__common-1da1a0a4f83fa279e49fd766324f8b50.js" defer></script><script src="/app/_expo/static/js/web/index-202bbaa4a1887a416034caefea71b385.js" defer></script>
+</body>
+</html>
