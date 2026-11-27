@@ -18,12 +18,15 @@ self.addEventListener('fetch', (e) => {
     e.respondWith(caches.open('memories-files').then((c) => c.match(url.origin + url.pathname)).then((r) => r || new Response('', { status: 404 })));
     return;
   }
-  // Every page address of the app is the same single page (index.html); the rest are its files.
-  const req = e.request.mode === 'navigate' ? new Request(BASE + '/index.html') : e.request;
+  // Every page address of the app is the same single page (index.html); the rest are its files. The page is always
+  // checked with the website (GitHub lets browsers keep it 10 minutes otherwise, which would delay an update); the
+  // code files get a new name with every build, so they can come from the cache.
+  const page = e.request.mode === 'navigate' || url.pathname === BASE + '/' || url.pathname === BASE + '/index.html';
+  const req = page ? new Request(BASE + '/index.html', { cache: 'no-cache' }) : e.request;
   e.respondWith(fetch(req).then((r) => {
-    if (r.ok) { const copy = r.clone(); caches.open(SHELL).then((c) => c.put(req, copy)); }
+    if (r.ok) { const copy = r.clone(); caches.open(SHELL).then((c) => c.put(page ? BASE + '/index.html' : req, copy)); }
     return r;
-  }).catch(() => caches.match(req).then((r) => r || new Response('Offline', { status: 503 }))));
+  }).catch(() => caches.match(page ? BASE + '/index.html' : req, { ignoreSearch: true }).then((r) => r || new Response('Offline', { status: 503 }))));
 });
 
 self.addEventListener('push', (e) => e.waitUntil((async () => {
